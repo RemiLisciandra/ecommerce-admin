@@ -9,7 +9,7 @@ const inter = Inter({subsets: ['latin']})
 
 export const metadata = {
     title: 'Admin dashboard',
-    description: 'E-Commerce',
+    description: 'E-Commerce'
 }
 
 export default async function RootLayout({children,}: { children: React.ReactNode }) {
