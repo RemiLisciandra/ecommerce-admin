@@ -1,18 +1,17 @@
 "use client";
 
-import React, {useEffect, useState} from "react";
-
+import React, {useEffect, useState, useContext} from "react";
+import AlertModalContext from '@/components/modals/alert-modal-context';
 import {Modal} from "@/components/ui/modal";
 import {Button} from "@/components/ui/button";
 
 interface AlertModalProps {
     isOpen: boolean;
-    onClose: () => void;
-    onConfirm: () => void;
     loading: boolean;
 }
 
-export const AlertModal: React.FC<AlertModalProps> = ({isOpen, onClose, onConfirm, loading}) => {
+export const AlertModal: React.FC<AlertModalProps> = ({isOpen, loading}) => {
+    const {onClose, onConfirm} = useContext(AlertModalContext);
     const [isMounted, setIsMounted] = useState(false);
 
     useEffect(() => {
@@ -34,7 +33,9 @@ export const AlertModal: React.FC<AlertModalProps> = ({isOpen, onClose, onConfir
                 <Button disabled={loading} variant="outline" onClick={onClose}>
                     Cancel
                 </Button>
-                <Button disabled={loading} variant="destructive" onClick={onConfirm}>Continue</Button>
+                <Button disabled={loading} variant="destructive" onClick={onConfirm}>
+                    Continue
+                </Button>
             </div>
         </Modal>
     );

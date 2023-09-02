@@ -17,6 +17,7 @@ import {useParams, useRouter} from "next/navigation";
 import {AlertModal} from "@/components/modals/alert-modal";
 import {ApiAlert} from "@/components/api-alert";
 import {useOrigin} from "@/hooks/use-origin";
+import AlertModalContext from '@/components/modals/alert-modal-context';
 
 interface SettingsFormProps {
     initialData: Store;
@@ -65,8 +66,8 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({initialData}) => {
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     return (
-        <>
-            <AlertModal isOpen={open} onClose={() => setOpen(false)} onConfirm={onDelete} loading={loading} />
+        <AlertModalContext.Provider value={{onClose: () => setOpen(false), onConfirm: onDelete}}>
+            <AlertModal isOpen={open} loading={loading}/>
             <div className="flex items-center justify-between">
                 <Heading title={"Settings"} description={"Manage store preferences"}/>
                 <Button
@@ -102,7 +103,7 @@ export const SettingsForm: React.FC<SettingsFormProps> = ({initialData}) => {
                 </form>
             </Form>
             <Separator/>
-            <ApiAlert title="NEXT_PUBLIC_API_URL" description={`${origin}/api/${params.storeId}`} variant="public" />
-        </>
+            <ApiAlert title="NEXT_PUBLIC_API_URL" description={`${origin}/api/${params.storeId}`} variant="public"/>
+        </AlertModalContext.Provider>
     )
 }
