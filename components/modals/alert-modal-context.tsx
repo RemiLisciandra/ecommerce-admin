@@ -6,8 +6,10 @@ interface AlertModalContextProps {
 }
 
 const AlertModalContext = React.createContext<AlertModalContextProps>({
-    onClose: () => {},
-    onConfirm: () => {},
+    onClose: () => {
+    },
+    onConfirm: () => {
+    },
 });
 
 export default AlertModalContext;

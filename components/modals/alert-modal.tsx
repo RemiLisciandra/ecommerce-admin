@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useContext } from "react";
-import { Modal } from "@/components/ui/modal";
-import { Button } from "@/components/ui/button";
+import React, {useContext} from "react";
+import {Modal} from "@/components/ui/modal";
+import {Button} from "@/components/ui/button";
 import AlertModalContext from '@/components/modals/alert-modal-context';
 
 interface AlertModalProps {
@@ -10,8 +10,8 @@ interface AlertModalProps {
     loading: boolean;
 }
 
-export const AlertModal: React.FC<AlertModalProps> = ({ isOpen, loading }) => {
-    const { onClose, onConfirm } = useContext(AlertModalContext);
+export const AlertModal: React.FC<AlertModalProps> = ({isOpen, loading}) => {
+    const {onClose, onConfirm} = useContext(AlertModalContext);
 
     return (
         <Modal
