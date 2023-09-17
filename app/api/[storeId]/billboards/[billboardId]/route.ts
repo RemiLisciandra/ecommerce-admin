@@ -19,7 +19,7 @@ export async function GET(req: Request, {params}: { params: { billboardId: strin
         console.log('[BILLBOARD_GET]', error);
         return new NextResponse("Internal error", {status: 500});
     }
-};
+}
 
 export async function DELETE(
     req: Request,
@@ -58,7 +58,7 @@ export async function DELETE(
         console.log('[BILLBOARD_DELETE]', error);
         return new NextResponse("Internal error", {status: 500});
     }
-};
+}
 
 
 export async function PATCH(req: Request, {params}: { params: { billboardId: string, storeId: string } }) {
